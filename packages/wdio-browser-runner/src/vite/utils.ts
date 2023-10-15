@@ -55,8 +55,9 @@ export async function getTemplate(options: WebdriverIO.BrowserRunnerOptions, env
     }
 
     const mochaPath = await resolve('mocha', `${rootFileUrl}/node_modules`)
-    const mochaCSSHref = `${url.fileURLToPath(mochaPath)}/mocha.css`
-    const mochaJSSrc = `${url.fileURLToPath(mochaPath)}/mocha.js`
+    const mochaCSSHref = `${url.fileURLToPath(path.dirname(mochaPath))}/mocha.css`
+    const mochaJSSrc = `${url.fileURLToPath(path.dirname(mochaPath))}/mocha.js`
+    console.log(mochaPath, mochaJSSrc)
 
     return /* html */`
     <!doctype html>
